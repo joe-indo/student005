@@ -1,0 +1,246 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        var pointLeft = 500;
+
+        function gameingProgress(result) {
+            if (result == false) {
+                pointLeft = pointLeft - 50;
+            } else {
+                pointLeft = pointLeft + 150;
+            }
+            document.getElementById("pointLine").style.color = "#ff0000";
+            document.getElementById("pointLine").innerHTML = "<b>Enjoy your time playing!!! You now have </b>" + pointLeft + "<b> points</b>";
+            if (pointLeft <= 0) {
+                document.getElementById("numbersGambling1").style.visibility = 'hidden';
+                document.getElementById("dicesGambling2").style.visibility = 'hidden';
+                document.getElementById("pokerGambling3").style.visibility = 'hidden';
+                document.write("Sorry -_-! You lost all your points. Game Over!!");
+            } else if (pointLeft >= 1000) {
+                document.getElementById("numbersGambling1").style.visibility = 'hidden';
+                document.getElementById("dicesGambling2").style.visibility = 'hidden';
+                document.getElementById("pokerGambling3").style.visibility = 'hidden';
+                document.write(":D  !Victory!  !!Congratulations!!  You Gained over 1000 points  XD");
+            }
+        }
+
+        function ageTest(age, name) {
+            if (age < 18) {
+                document.getElementById("numbersGambling1").style.visibility = 'hidden';
+                document.getElementById("dicesGambling2").style.visibility = 'hidden';
+                document.getElementById("pokerGambling3").style.visibility = 'hidden';
+                document.write("Sorry, this game is only for people who is above 18 years old.");
+            } else if (age >= 18) {
+                document.getElementById("myDIV1").style.display = "block";
+                document.getElementById("myDIV2").style.display = "none";
+                document.getElementById("myDIV3").style.display = "none";
+                document.getElementById("myDIV4").style.display = "block";
+                document.getElementById("pointLine").style.color = "#ff0000";
+                document.getElementById("pointLine").innerHTML = "<b>Enjoy your time playing!!! You now have </b>" + pointLeft + "<b> points";
+                document.getElementById("sc1").innerHTML = "Welcome, " + name + "!";
+            }
+        }
+
+        function numbersGambling() {
+            var userNum = [];
+            var num1 = Math.floor(Math.random() * 10) + 1;
+            var num2 = Math.floor(Math.random() * 10) + 1;
+            var num3 = Math.floor(Math.random() * 10) + 1;
+            var i = 0
+            for (n = 1; n <= 3; n++) {
+                userNum[n] = prompt("Please gamble the number you think is right.(From 1 to 10)")
+            }
+            if (userNum[1] == num1) {
+                i++;
+            } else if (userNum[2] == num2) {
+                i++;
+            } else if (userNum[3] == num3) {
+                i++;
+            }
+            if (i == 0) {
+                document.getElementById("sc2").innerHTML = "Among " + num1 + "," + num2 + ',' + num3 + " you got none of them right... What a pity... You lose points..."
+                gameingProgress(false);
+            } else {
+                document.getElementById("sc2").innerHTML = "Among " + num1 + "," + num2 + ',' + num3 + " you got " + i + " of them right! Congratulations!!! You gain points!"
+                gameingProgress(true);
+            }
+        }
+
+        function dicesGambling() {
+            var userGuess = prompt("Please gamble the number you think is the sum of two dices(Restriction from 2 to 12)")
+            var x = Math.floor(Math.random() * 6) + 1;
+            var z = Math.floor(Math.random() * 6) + 1;
+            var total = x + z;
+            if (x == 1) {
+                document.getElementById("pic1").src = "dice1.jpg"
+            } else if (x == 2) {
+                document.getElementById("pic1").src = "dice2.jpg"
+            } else if (x == 3) {
+                document.getElementById("pic1").src = "dice3.jpg"
+            } else if (x == 4) {
+                document.getElementById("pic1").src = "dice4.jpg"
+            } else if (x == 5) {
+                document.getElementById("pic1").src = "dice5.jpg"
+            } else if (x == 6) {
+                document.getElementById("pic1").src = "dice6.jpg"
+            }
+            if (z == 1) {
+                document.getElementById("pic2").src = "dice1.jpg"
+            } else if (z == 2) {
+                document.getElementById("pic2").src = "dice2.jpg"
+            } else if (z == 3) {
+                document.getElementById("pic2").src = "dice3.jpg"
+            } else if (z == 4) {
+                document.getElementById("pic2").src = "dice4.jpg"
+            } else if (z == 5) {
+                document.getElementById("pic2").src = "dice5.jpg"
+            } else if (z == 6) {
+                document.getElementById("pic2").src = "dice6.jpg"
+            }
+            if (userGuess == total) {
+                document.getElementById("sc3").innerHTML = "The total is " + total + " You are right! Unbelievable! You gain lots of points!"
+                gameingProgress(true);
+            } else {
+                document.getElementById("sc3").innerHTML = "Ohh the total is " + total + " . That's not it... You lose points..."
+                gameingProgress(false);
+            }
+        }
+
+        function pokerGambling() {
+            alert("You will pick 3 card randomly, if the sum is between 19 and 21, you win, if it is not, you lose")
+            var a = Math.floor(Math.random() * 13) + 1;
+            var b = Math.floor(Math.random() * 13) + 1;
+            var c = Math.floor(Math.random() * 13) + 1;
+            var sum = a * 1 + b * 1 + c * 1
+            document.getElementById("pic3").width = "170";
+            document.getElementById("pic4").width = "170";
+            document.getElementById("pic5").width = "170";
+            document.getElementById("pic3").height = "262";
+            document.getElementById("pic4").height = "262";
+            document.getElementById("pic5").height = "262";
+            if (a == 1) {
+                document.getElementById("pic3").src = "poker1.png"
+            } else if (a == 2) {
+                document.getElementById("pic3").src = "poker2.png"
+            } else if (a == 3) {
+                document.getElementById("pic3").src = "poker3.png"
+            } else if (a == 4) {
+                document.getElementById("pic3").src = "poker4.png"
+            } else if (a == 5) {
+                document.getElementById("pic3").src = "poker5.png"
+            } else if (a == 6) {
+                document.getElementById("pic3").src = "poker6.png"
+            } else if (a == 7) {
+                document.getElementById("pic3").src = "poker7.png"
+            } else if (a == 8) {
+                document.getElementById("pic3").src = "poker8.png"
+            } else if (a == 9) {
+                document.getElementById("pic3").src = "poker9.png"
+            } else if (a == 10) {
+                document.getElementById("pic3").src = "poker10.png"
+            } else if (a == 11) {
+                document.getElementById("pic3").src = "poker11.jpg"
+            } else if (a == 12) {
+                document.getElementById("pic3").src = "poker12.jpg"
+            } else if (a == 13) {
+                document.getElementById("pic3").src = "poker13.jpg"
+            }
+            if (b == 1) {
+                document.getElementById("pic4").src = "poker1.png"
+            } else if (b == 2) {
+                document.getElementById("pic4").src = "poker2.png"
+            } else if (b == 3) {
+                document.getElementById("pic4").src = "poker3.png"
+            } else if (b == 4) {
+                document.getElementById("pic4").src = "poker4.png"
+            } else if (b == 5) {
+                document.getElementById("pic4").src = "poker5.png"
+            } else if (b == 6) {
+                document.getElementById("pic4").src = "poker6.png"
+            } else if (b == 7) {
+                document.getElementById("pic4").src = "poker7.png"
+            } else if (b == 8) {
+                document.getElementById("pic4").src = "poker8.png"
+            } else if (b == 9) {
+                document.getElementById("pic4").src = "poker9.png"
+            } else if (b == 10) {
+                document.getElementById("pic4").src = "poker10.png"
+            } else if (b == 11) {
+                document.getElementById("pic4").src = "poker11.jpg"
+            } else if (b == 12) {
+                document.getElementById("pic4").src = "poker12.jpg"
+            } else if (b == 13) {
+                document.getElementById("pic4").src = "poker13.jpg"
+            }
+            if (c == 1) {
+                document.getElementById("pic5").src = "poker1.png"
+            } else if (c == 2) {
+                document.getElementById("pic5").src = "poker2.png"
+            } else if (c == 3) {
+                document.getElementById("pic5").src = "poker3.png"
+            } else if (c == 4) {
+                document.getElementById("pic5").src = "poker4.png"
+            } else if (c == 5) {
+                document.getElementById("pic5").src = "poker5.png"
+            } else if (c == 6) {
+                document.getElementById("pic5").src = "poker6.png"
+            } else if (c == 7) {
+                document.getElementById("pic5").src = "poker7.png"
+            } else if (c == 8) {
+                document.getElementById("pic5").src = "poker8.png"
+            } else if (c == 9) {
+                document.getElementById("pic5").src = "poker9.png"
+            } else if (c == 10) {
+                document.getElementById("pic5").src = "poker10.png"
+            } else if (c == 11) {
+                document.getElementById("pic5").src = "poker11.jpg"
+            } else if (c == 12) {
+                document.getElementById("pic5").src = "poker12.jpg"
+            } else if (c == 13) {
+                document.getElementById("pic5").src = "poker13.jpg"
+            }
+            if (sum >= 19 && sum <= 21) {
+                document.getElementById("sc4").innerHTML = "You did it! You gain points!"
+                gameingProgress(true);
+            } else {
+                document.getElementById("sc4").innerHTML = "Opps! The total is " + sum + "... That's not it... You lose points..."
+                gameingProgress(false);
+            }
+        }
+    </script>
+</head>
+
+<body background="background.jpg">
+    <center>
+        <form>
+            <div id="myDIV4" style="display:none;">
+                <p id="pointLine"> </p>
+            </div>
+            <div id="myDIV3" style="display:block;">
+                <p>
+                    <font color=Yellow><b> WELCOME TO THE GAMBLING ONLINE PROGRAM!!!</b></p>
+                <p>
+                    <font color=Yellow><b>NOW PLEASE ENTER YOUR INFORMATION BELOW TO CONFIRM YOUR QUALIFICATION TO THIS GAME. </b></p>
+            </div>
+            <p><b>Name:</b> <input type="TEXT" size="10" name="nameInput"></p>
+            <p><b>Gender:</b> <input type="TEXT" size="10" name="genderInput"></p>
+            <p><b>Age:</b> <input type="TEXT" size="10" name="ageInput"></p>
+            <div id="myDIV2" style="display:block;">
+                <p> <input type="BUTTON" value="Submit" onclick="ageTest(ageInput.value,nameInput.value);"> </p>
+            </div>
+            <div id="myDIV1" style="display:none;"> <input type="BUTTON" id="numbersGambling1" value="Numbers Gambling" onclick="numbersGambling()"> <input type="BUTTON" id="dicesGambling2" value="Dices Gambling" onclick="dicesGambling()"> <input type="BUTTON" id="pokerGambling3" value="Poker Cards Gambling" onclick="pokerGambling()"> </p>
+            </div>
+        </form>
+    </center>
+    <p id="sc1"></p>
+    <p id="sc2"></p>
+    <p id="sc3"></p> <img id="pic1"> <img id="pic2">
+    <p id="sc4"></p> <img id="pic3"> <img id="pic4"> <img id="pic5">
+    <p id="sc5"></p>
+</body>
+
+</html>
